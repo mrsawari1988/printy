@@ -21,7 +21,7 @@ function createWindow() {
     });
 
     win.loadURL('http://localhost:3000');
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
     ipcMain.on('print-file', (event, filesItems) => {
         //createPrintWindow(filePath);
         console.log(filesItems);

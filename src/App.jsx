@@ -5,13 +5,14 @@ import Footer from './components/FooterComponent';
 import Header from './components/Header';
 import ListItemsComponent from './components/ListItemsComponent';
 function App() {
-    const [items, setItems] = useState([
-        { fileName: 'document.pdf', printerName: 'HP cheaper 1018', copies: 10 },
-        { fileName: 'docy.pdf', printerName: 'canon  4410', copies: 3 },
-    ]);
+    const [items, setItems] = useState([]);
 
     const addFileHandler = (newFile) => {
         setItems([...items, newFile]);
+    };
+    const deleteFileHandler = (id) => {
+        console.log(id);
+        setItems(items.filter((item) => item.id !== id));
     };
 
     const printHandler = () => {
@@ -23,7 +24,7 @@ function App() {
 
             <div className='wrapper'>
                 <Contorols addFileHandler={addFileHandler} />
-                <ListItemsComponent items={items} />
+                <ListItemsComponent items={items} deleteFileHandler={deleteFileHandler} />
             </div>
             <Footer printHandler={printHandler} />
         </div>

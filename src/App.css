@@ -127,6 +127,7 @@ body {
     /* border: 1px solid #6c757d; */
     display: flex;
     justify-content: center;
+    width: 538px;
 }
 
 .list-items ul {
@@ -200,4 +201,26 @@ body {
 .field h4 i {
     margin-left: 5px;
     cursor: pointer;
+}
+
+input[type='file'] {
+    display: none;
+}
+.file-upload {
+    height: 40px;
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.active {
+    background-color: #5372f0;
+    border: 1px solid #5372f0;
+    color: white;
 }

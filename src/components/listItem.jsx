@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ListItem({ fileName, printerName, copies }) {
+export default function ListItem({ fileName, printerName, copies, id, deleteFileHandler }) {
     return (
         <li>
             <div className='field'>
@@ -18,7 +18,7 @@ export default function ListItem({ fileName, printerName, copies }) {
             <div className='field'>
                 <h5>options</h5>
                 <h4>
-                    <i className='fa-solid fa-trash-can'></i>
+                    <i className='fa-solid fa-trash-can' onClick={() => deleteFileHandler(id)}></i>
                     <i className='fa-solid fa-pen-to-square'></i>
                 </h4>
             </div>
