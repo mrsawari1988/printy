@@ -1,38 +1,203 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #e3f2fd;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+    width: 850px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px 35px 35px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.header h2 {
+    color: #5372f0;
 }
 
-.App-link {
-  color: #61dafb;
+.header h5 {
+    padding: 5px 5px 5px 10px;
+    color: #ccc;
+    margin-left: 10px;
+    border-left: 1px solid #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrapper {
+    display: flex;
+}
+
+.wrapper .contorols {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 15px 20px;
+    border-radius: 5px;
+    height: 300px;
+}
+.wrapper .contorols .adding-contorols {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .contorols .adding-contorols button {
+    height: 40px;
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.adding-contorols select {
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.adding-contorols select {
+    height: 40px;
+}
+
+.add-item-button button {
+    width: 100%;
+    background: #fff;
+    border: 2px solid #099541;
+    height: 40px;
+    font-size: 14px;
+    color: #099541;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.add-item-button button:hover {
+    color: #fff;
+    background: #099541;
+}
+.print-number {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.print-number input {
+    text-align: center;
+    padding: 5px;
+    height: 40px;
+    width: 75px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.print-number input:focus {
+    outline: none;
+    border: 1px solid #5372f0;
+}
+.print-number label {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.list-items {
+    background: rgb(243, 242, 242);
+    flex-grow: 1;
+    border-radius: 5px;
+    margin-left: 10px;
+    /* border: 1px solid #6c757d; */
+    display: flex;
+    justify-content: center;
+}
+
+.list-items ul {
+    list-style: none;
+    width: 100%;
+    padding: 10px;
+}
+
+.list-items ul li {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border: 1px dashed #ccc;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: end;
+}
+
+.footer button {
+    width: 200px;
+    background: #5372f0;
+    border: 1px solid #5372f0;
+    height: 40px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.field:nth-of-type(1) {
+    min-width: 200px;
+}
+.field:nth-of-type(2) {
+    min-width: 200px;
+}
+.field:nth-of-type(3) {
+    min-width: 60px;
+}
+.field:nth-of-type(4) {
+    min-width: 60px;
+}
+.field h5 {
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 8px;
+    margin-bottom: 5px;
+}
+.field h4 {
+    color: #5372f0;
+    font-size: 14px;
+}
+
+.field:nth-of-type(4) h4 {
+    /* text-align: center; */
+    font-size: 12px;
+}
+.field:nth-of-type(3) h4 {
+    /* text-align: center; */
+    padding: 0 10px;
+}
+
+.field h4 i {
+    margin-left: 5px;
+    cursor: pointer;
 }
