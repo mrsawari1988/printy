@@ -17,6 +17,9 @@ export default function Contorols({ addFileHandler }) {
         if (fileName === null) {
             failores.push({ id: 1, type: 'fileName', message: 'plz select a file' });
         }
+        if (fileName !== null && fileRef.current.files[0].type !== 'application/pdf') {
+            failores.push({ id: 4, type: 'fileType', message: 'the selected file is not PDF' });
+        }
         if (printerName === null) {
             failores.push({ id: 2, type: 'printerName', message: 'please select a printer' });
         }
@@ -48,6 +51,7 @@ export default function Contorols({ addFileHandler }) {
         if (!e.target.files[0]) {
             return;
         }
+        console.log(e.target.files[0]);
         setFileName(e.target.files[0].name);
         setButtonName(e.target.files[0].name);
         setfilePath(e.target.files[0].path);
@@ -57,7 +61,12 @@ export default function Contorols({ addFileHandler }) {
         <div className='contorols'>
             <div className='adding-contorols'>
                 <label className={isActive ? 'file-upload active' : 'file-upload'}>
-                    <input type='file' onChange={(e) => handleFile(e)} ref={fileRef} />
+                    <input
+                        type='file'
+                        onChange={(e) => handleFile(e)}
+                        ref={fileRef}
+                        accept='application/pdf'
+                    />
                     {buttonName}
                 </label>
                 <select
