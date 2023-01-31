@@ -2,26 +2,47 @@ import React, { useState } from 'react';
 import { useRef } from 'react';
 
 export default function Contorols({ addFileHandler }) {
-    const [fileName, setFileName] = useState('');
+    const [fileName, setFileName] = useState(null);
     const [filePath, setfilePath] = useState('');
-    const [printerName, setPrinterName] = useState('');
+    const [printerName, setPrinterName] = useState(null);
     const [copies, setCopies] = useState(1);
     const [buttonName, setButtonName] = useState('Choose file');
     const [isActive, setIsActive] = useState(false);
+    // refrence to the file input so later it's value will be cleared
     const fileRef = useRef();
+    const [errors, setErrors] = useState([]);
     const addFile = () => {
-        addFileHandler({
-            fileName,
-            filePath,
-            printerName,
-            copies,
-            id: Math.random(),
-        });
-        setIsActive(false);
-        setButtonName('Choose file');
-        setFileName('');
-        setfilePath('');
-        fileRef.current.value = null;
+        //input validations
+        const failores = [];
+        if (fileName === null) {
+            failores.push({ id: 1, type: 'fileName', message: 'plz select a file' });
+        }
+        if (printerName === null) {
+            failores.push({ id: 2, type: 'printerName', message: 'please select a printer' });
+        }
+        if (copies > 6 || copies <= 0) {
+            failores.push({ id: 3, type: 'copies', message: 'copies must be between 1 and 6' });
+        }
+        console.log(errors);
+        if (failores.length > 0) {
+            setErrors([...failores]);
+        } else {
+            addFileHandler({
+                fileName,
+                filePath,
+                printerName,
+                copies,
+                id: Math.random(),
+            });
+            setIsActive(false);
+            setButtonName('Choose file');
+            setFileName(null);
+            setPrinterName(null);
+            setfilePath(null);
+            //clearing the file input value
+            fileRef.current.value = null;
+            setErrors([]);
+        }
     };
     const handleFile = (e) => {
         if (!e.target.files[0]) {
@@ -56,6 +77,14 @@ export default function Contorols({ addFileHandler }) {
                         value={copies}
                         onChange={(e) => setCopies(e.target.value)}
                     />
+                </div>
+                <div className='errors'>
+                    {errors &&
+                        errors.map((error) => (
+                            <p className='alert' key={error.id}>
+                                - {error.message}
+                            </p>
+                        ))}
                 </div>
             </div>
             <div className='add-item-button'>
