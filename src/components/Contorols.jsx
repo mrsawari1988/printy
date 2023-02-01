@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useRef } from 'react';
 import useControls from '../hooks/useControls';
 import useValidation from './../hooks/useValidation';
-export default function NewContorols({ addFileHandler }) {
+export default function Contorols({ addFileHandler, printersList }) {
+    // refrence to the file input so later it's value will be cleared
     const fileRef = useRef();
     const { state, changeHandler, buttonName, isActive, resetState } = useControls(fileRef);
     const { validator } = useValidation(fileRef);
-    // refrence to the file input so later it's value will be cleared
     const [errors, setErrors] = useState([]);
     const addFile = () => {
         //input validations
@@ -17,7 +17,7 @@ export default function NewContorols({ addFileHandler }) {
             addFileHandler({
                 fileName: state.fileName,
                 printerName: state.printerName,
-                filePath: state.printerName,
+                filePath: state.filePath,
                 copies: state.copies,
                 id: Math.random(),
             });
@@ -26,7 +26,6 @@ export default function NewContorols({ addFileHandler }) {
             setErrors([]);
         }
     };
-
     return (
         <div className='contorols'>
             <div className='adding-contorols'>
@@ -45,8 +44,13 @@ export default function NewContorols({ addFileHandler }) {
                     value={state.printerName || ''}
                     onChange={(e) => changeHandler(e)}
                 >
-                    <option value='HP 1018'>HP 1018</option>
-                    <option value='Canon 4450'>HP 1018</option>
+                    {/* render printers list */}
+                    {printersList &&
+                        printersList.map((printer) => (
+                            <option value={printer.name} key={printer.deviceId}>
+                                {printer.name}
+                            </option>
+                        ))}
                 </select>
                 <div className='print-number'>
                     <label htmlFor='copies'>Number of Copies</label>
