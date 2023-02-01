@@ -1,81 +1,60 @@
 import React, { useState } from 'react';
 import { useRef } from 'react';
-
-export default function Contorols({ addFileHandler }) {
-    const [fileName, setFileName] = useState(null);
-    const [filePath, setfilePath] = useState('');
-    const [printerName, setPrinterName] = useState(null);
-    const [copies, setCopies] = useState(1);
-    const [buttonName, setButtonName] = useState('Choose file');
-    const [isActive, setIsActive] = useState(false);
-    // refrence to the file input so later it's value will be cleared
+import useControls from '../hooks/useControls';
+import useValidation from './../hooks/useValidation';
+export default function NewContorols({ addFileHandler }) {
     const fileRef = useRef();
+    const { state, changeHandler, buttonName, isActive, resetState } = useControls(fileRef);
+    const { validator } = useValidation(fileRef);
+    // refrence to the file input so later it's value will be cleared
     const [errors, setErrors] = useState([]);
     const addFile = () => {
         //input validations
-        const failores = [];
-        if (fileName === null) {
-            failores.push({ id: 1, type: 'fileName', message: 'plz select a file' });
-        }
-        if (printerName === null) {
-            failores.push({ id: 2, type: 'printerName', message: 'please select a printer' });
-        }
-        if (copies > 6 || copies <= 0) {
-            failores.push({ id: 3, type: 'copies', message: 'copies must be between 1 and 6' });
-        }
-        console.log(errors);
+        const failores = validator(state);
         if (failores.length > 0) {
             setErrors([...failores]);
         } else {
             addFileHandler({
-                fileName,
-                filePath,
-                printerName,
-                copies,
+                fileName: state.fileName,
+                printerName: state.printerName,
+                filePath: state.printerName,
+                copies: state.copies,
                 id: Math.random(),
             });
-            setIsActive(false);
-            setButtonName('Choose file');
-            setFileName(null);
-            setPrinterName(null);
-            setfilePath(null);
-            //clearing the file input value
-            fileRef.current.value = null;
+
+            resetState();
             setErrors([]);
         }
     };
-    const handleFile = (e) => {
-        if (!e.target.files[0]) {
-            return;
-        }
-        setFileName(e.target.files[0].name);
-        setButtonName(e.target.files[0].name);
-        setfilePath(e.target.files[0].path);
-        setIsActive(true);
-    };
+
     return (
         <div className='contorols'>
             <div className='adding-contorols'>
                 <label className={isActive ? 'file-upload active' : 'file-upload'}>
-                    <input type='file' onChange={(e) => handleFile(e)} ref={fileRef} />
+                    <input
+                        type='file'
+                        onChange={(e) => changeHandler(e)}
+                        ref={fileRef}
+                        accept='application/pdf'
+                    />
                     {buttonName}
                 </label>
                 <select
-                    name='printer'
+                    name='printerName'
                     id='printer'
-                    value={printerName}
-                    onChange={(e) => setPrinterName(e.target.value)}
+                    value={state.printerName || ''}
+                    onChange={(e) => changeHandler(e)}
                 >
                     <option value='HP 1018'>HP 1018</option>
                     <option value='Canon 4450'>HP 1018</option>
                 </select>
                 <div className='print-number'>
-                    <label htmlFor='prntnmbr'>Number of Copies</label>
+                    <label htmlFor='copies'>Number of Copies</label>
                     <input
                         type='text'
-                        name='prntnmbr'
-                        value={copies}
-                        onChange={(e) => setCopies(e.target.value)}
+                        name='copies'
+                        value={state.copies || 1}
+                        onChange={(e) => changeHandler(e)}
                     />
                 </div>
                 <div className='errors'>
