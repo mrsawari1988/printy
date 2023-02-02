@@ -12,9 +12,29 @@ body {
     min-height: 100vh;
     background: #e3f2fd;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 .container {
-    width: 850px;
+    width: 900px;
     background: #fff;
     border-radius: 10px;
     padding: 30px 35px 35px;
@@ -128,6 +148,8 @@ body {
     display: flex;
     justify-content: center;
     width: 538px;
+    height: 300px;
+    overflow: auto;
 }
 
 .list-items ul {
