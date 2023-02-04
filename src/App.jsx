@@ -3,16 +3,16 @@ import './App.css';
 import Contorols from './components/Contorols';
 import Footer from './components/FooterComponent';
 import Header from './components/Header';
-import ListItemsComponent from './components/ListItemsComponent';
+import FileItemList from './components/FileItemsList';
 function App() {
     const [items, setItems] = useState([]);
+
     const [printersList, setPrintersList] = useState([]);
 
     const addFileHandler = (newFile) => {
         setItems([...items, newFile]);
     };
     const deleteFileHandler = (id) => {
-        console.log(id);
         setItems(items.filter((item) => item.id !== id));
     };
 
@@ -40,7 +40,11 @@ function App() {
 
             <div className='wrapper'>
                 <Contorols addFileHandler={addFileHandler} printersList={printersList} />
-                <ListItemsComponent items={items} deleteFileHandler={deleteFileHandler} />
+                <FileItemList
+                    items={items}
+                    deleteFileHandler={deleteFileHandler}
+                    setItems={setItems}
+                />
             </div>
             <Footer printHandler={printHandler} />
         </div>

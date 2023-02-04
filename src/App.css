@@ -172,6 +172,21 @@ body {
     padding: 0 8px;
 }
 
+.drag-icon {
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.drag-icon:hover {
+    background: #000;
+    color: white;
+}
+
 .footer {
     margin-top: 15px;
     display: flex;

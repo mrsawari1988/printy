@@ -5,7 +5,6 @@ const useControls = (fileRef) => {
     const [isActive, setIsActive] = useState(false);
 
     const changeHandler = (e) => {
-        console.log(e);
         e.persist();
         if (e.target.type === 'file') {
             setState((state) => ({

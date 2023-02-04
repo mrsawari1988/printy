@@ -1,6 +1,5 @@
 const useValidation = (fileRef) => {
     const validator = (stateObj) => {
-        console.log(stateObj);
         const erros = [];
         if (!stateObj.fileName) {
             erros.push({ id: 1, type: 'fileName', message: 'plz select a file' });
