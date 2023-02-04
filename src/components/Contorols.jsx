@@ -38,12 +38,7 @@ export default function Contorols({ addFileHandler, printersList }) {
                     />
                     {buttonName}
                 </label>
-                <select
-                    name='printerName'
-                    id='printer'
-                    value={state.printerName || ''}
-                    onChange={(e) => changeHandler(e)}
-                >
+                <select name='printerName' id='printer' onChange={(e) => changeHandler(e)}>
                     {/* render printers list */}
                     {printersList &&
                         printersList.map((printer) => (

@@ -15,7 +15,9 @@ function App() {
     const deleteFileHandler = (id) => {
         setItems(items.filter((item) => item.id !== id));
     };
-
+    const clearAllFilesHandler = () => {
+        setItems([]);
+    };
     const printHandler = () => {
         window.electronAPI.printFile(items);
     };
@@ -37,7 +39,6 @@ function App() {
     return (
         <div className='container'>
             <Header />
-
             <div className='wrapper'>
                 <Contorols addFileHandler={addFileHandler} printersList={printersList} />
                 <FileItemList
@@ -46,7 +47,7 @@ function App() {
                     setItems={setItems}
                 />
             </div>
-            <Footer printHandler={printHandler} />
+            <Footer printHandler={printHandler} clearAllFilesHandler={clearAllFilesHandler} />
         </div>
     );
 }

@@ -18,7 +18,15 @@ export default function FileItemList({ items, deleteFileHandler, setItems }) {
             });
         }
     }
-
+    if (items.length < 1) {
+        return (
+            <div className='list-items'>
+                <div className='no-file'>
+                    <h5>there is no file</h5>
+                </div>
+            </div>
+        );
+    }
     return (
         <div className='list-items'>
             <DndContext
