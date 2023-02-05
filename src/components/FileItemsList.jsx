@@ -5,20 +5,20 @@ import FileItem from './FileItem';
 import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-export default function FileItemList({ items, deleteFileHandler, setItems }) {
+export default function FileItemList({ filesList, deleteFileHandler, setFilesList }) {
     const sensors = useSensors(useSensor(PointerSensor));
     function handleDragEnd(event) {
         const { active, over } = event;
         if (active.id !== over.id) {
-            setItems((items) => {
-                const oldIndex = items.map((item) => item.id).indexOf(active.id);
-                const newIndex = items.map((item) => item.id).indexOf(over.id);
+            setFilesList((filesList) => {
+                const oldIndex = filesList.map((item) => item.id).indexOf(active.id);
+                const newIndex = filesList.map((item) => item.id).indexOf(over.id);
 
-                return arrayMove(items, oldIndex, newIndex);
+                return arrayMove(filesList, oldIndex, newIndex);
             });
         }
     }
-    if (items.length < 1) {
+    if (filesList.length < 1) {
         return (
             <div className='list-items'>
                 <div className='no-file'>
@@ -34,9 +34,9 @@ export default function FileItemList({ items, deleteFileHandler, setItems }) {
                 collisionDetection={closestCenter}
                 onDragEnd={handleDragEnd}
             >
-                <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                <SortableContext items={filesList} strategy={verticalListSortingStrategy}>
                     <ul>
-                        {items.map((item) => {
+                        {filesList.map((item) => {
                             return (
                                 <FileItem
                                     fileName={item.fileName}

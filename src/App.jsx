@@ -4,22 +4,13 @@ import Contorols from './components/Contorols';
 import Footer from './components/FooterComponent';
 import Header from './components/Header';
 import FileItemList from './components/FileItemsList';
+import usePrinty from './hooks/usePrinty';
 function App() {
-    const [items, setItems] = useState([]);
-
+    const { filesList, setFilesList, deleteFileHandler, clearAllFilesHandler, addFileHandler } =
+        usePrinty();
     const [printersList, setPrintersList] = useState([]);
-
-    const addFileHandler = (newFile) => {
-        setItems([...items, newFile]);
-    };
-    const deleteFileHandler = (id) => {
-        setItems(items.filter((item) => item.id !== id));
-    };
-    const clearAllFilesHandler = () => {
-        setItems([]);
-    };
     const printHandler = () => {
-        window.electronAPI.printFile(items);
+        window.electronAPI.printFile(filesList);
     };
 
     useEffect(() => {
@@ -42,9 +33,9 @@ function App() {
             <div className='wrapper'>
                 <Contorols addFileHandler={addFileHandler} printersList={printersList} />
                 <FileItemList
-                    items={items}
+                    filesList={filesList}
                     deleteFileHandler={deleteFileHandler}
-                    setItems={setItems}
+                    setFilesList={setFilesList}
                 />
             </div>
             <Footer printHandler={printHandler} clearAllFilesHandler={clearAllFilesHandler} />
