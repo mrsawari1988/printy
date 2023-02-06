@@ -1,33 +1,32 @@
 import useControls from './../hooks/useControls';
-import { useState, useEffect } from 'react';
-export default function Modal({ editItem, setOpenModal, setEditItem, updateFileItem }) {
-    const { state, changeHandler, setState } = useControls(null, editItem, 'modal');
-    const [printersList, setPrintersList] = useState([]);
-    useEffect(() => {
-        //get printers from electronjs
-        const fetchPrinters = async () => {
-            const printers = await window.electronAPI.getPrinters();
-            setPrintersList(printers);
-        };
-
-        try {
-            fetchPrinters();
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
+export default function Modal({
+    editItem,
+    setOpenModal,
+    setEditItem,
+    updateFileItem,
+    printersList,
+}) {
+    const { state, changeHandler } = useControls(null, editItem);
 
     const update = () => {
         updateFileItem(state);
         setEditItem({});
         setOpenModal(false);
     };
-
+    const closeModal = () => {
+        setEditItem({});
+        setOpenModal(false);
+    };
     return (
-        <div className='overlay'>
-            <div className='modal-body'>
+        <div className='overlay' onClick={(e) => closeModal(e)}>
+            <div
+                className='modal-body'
+                onClick={(e) => {
+                    e.stopPropagation();
+                }}
+            >
                 <div className='modal-header'>
-                    <h3>this is a modal</h3>
+                    <h3>Edit File Item</h3>
                 </div>
                 <div className='modal-content'>
                     <label>{state.fileName || ''}</label>
@@ -51,10 +50,14 @@ export default function Modal({ editItem, setOpenModal, setEditItem, updateFileI
                         value={state.copies || ''}
                         onChange={(e) => changeHandler(e)}
                     />
-                    <button onClick={() => update()}>Update</button>
+                    <button onClick={() => update()} className='update-botton'>
+                        Update
+                    </button>
                 </div>
                 <div className='modal-footer'>
-                    <h4>this is footer</h4>
+                    <button onClick={() => closeModal()} className='cancel-botton'>
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>

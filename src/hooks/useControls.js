@@ -1,5 +1,6 @@
 import { useState } from 'react';
-const useControls = (fileRef, initialState = { copies: 1 }, obj) => {
+const useControls = (fileRef, initialState = { copies: 1 }) => {
+    // this hook i used by contorols component and Modal component , so in modal we pass the editable item as the initial state
     const [state, setState] = useState({ ...initialState });
     //using this variable to set the button name to file name
     const [buttonName, setButtonName] = useState('choose a file');

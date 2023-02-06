@@ -35,6 +35,7 @@ export default function FileItemList({
     }
     return (
         <div className='list-items'>
+            {/* this component are used to make Drag&Drop */}
             <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}

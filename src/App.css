@@ -308,7 +308,7 @@ p.alert {
 .modal-body {
     background: #fff;
     border-radius: 5px;
-    min-width: 500px;
+    min-width: 600px;
     padding: 5px 20px;
 }
 
@@ -323,6 +323,7 @@ p.alert {
 .modal-footer {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
     padding: 10px 10px 0px 0px;
     border-top: 1px solid #ccc;
@@ -356,4 +357,16 @@ button {
 .modal-content select {
     min-width: 200px;
     text-align: center;
+}
+.cancel-botton {
+    background: #c51818;
+    color: white;
+    border: 1px solid #c51818;
+    align-self: end;
+}
+
+.update-botton {
+    background: #068321;
+    color: white;
+    border: 1px solid #068321;
 }

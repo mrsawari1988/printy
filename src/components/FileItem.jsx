@@ -14,17 +14,18 @@ export default function FileItem({
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
         id: id,
     });
-
+    // function is used to set editable item for modal
     const updateHandler = () => {
-        setEditItem({});
         setEditItem(item);
         setOpenModal(true);
     };
-    // console.log(item);
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
     };
+
+    //setNodeRef and style are applied on main element whis is <li> here
+    // attributes and listeners are applied to drag handler which is <i> here but if we dont use handler we must set them to the main element
     return (
         <li ref={setNodeRef} style={style}>
             <div className='field'>
