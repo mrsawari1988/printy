@@ -1,6 +1,6 @@
 import useControls from './../hooks/useControls';
 import { useState, useEffect } from 'react';
-export default function Modal({ openModal, editItem, setOpenModal, setEditItem }) {
+export default function Modal({ editItem, setOpenModal, setEditItem, updateFileItem }) {
     const { state, changeHandler, setState } = useControls(null, editItem, 'modal');
     const [printersList, setPrintersList] = useState([]);
     useEffect(() => {
@@ -17,8 +17,8 @@ export default function Modal({ openModal, editItem, setOpenModal, setEditItem }
         }
     }, []);
 
-    const updateState = () => {
-        console.log(state);
+    const update = () => {
+        updateFileItem(state);
         setEditItem({});
         setOpenModal(false);
     };
@@ -51,7 +51,7 @@ export default function Modal({ openModal, editItem, setOpenModal, setEditItem }
                         value={state.copies || ''}
                         onChange={(e) => changeHandler(e)}
                     />
-                    <button onClick={() => updateState()}>Update</button>
+                    <button onClick={() => update()}>Update</button>
                 </div>
                 <div className='modal-footer'>
                     <h4>this is footer</h4>

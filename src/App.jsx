@@ -17,10 +17,19 @@ function App() {
     const printHandler = () => {
         window.electronAPI.printFile(filesList);
     };
-    const updateEditItem = (item) => {
-        setEditItem(item);
+
+    const updateFileItem = (item) => {
+        const newState = [];
+        filesList.forEach((file) => {
+            if (file.id !== item.id) {
+                newState.push(file);
+            } else {
+                newState.push(item);
+            }
+        });
+
+        setFilesList(newState);
     };
-    const updateFilesList = (newItem) => {};
 
     useEffect(() => {
         //get printers from electronjs
@@ -57,8 +66,8 @@ function App() {
                     openModal={openModal}
                     setOpenModal={setOpenModal}
                     editItem={editItem}
-                    updateFilesList={updateFilesList}
                     setEditItem={setEditItem}
+                    updateFileItem={updateFileItem}
                 />
             )}
         </>
