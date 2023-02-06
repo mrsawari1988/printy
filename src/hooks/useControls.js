@@ -1,6 +1,6 @@
 import { useState } from 'react';
-const useControls = (fileRef) => {
-    const [state, setState] = useState({ copies: 1 });
+const useControls = (fileRef, initialState = { copies: 1 }, obj) => {
+    const [state, setState] = useState({ ...initialState });
     //using this variable to set the button name to file name
     const [buttonName, setButtonName] = useState('choose a file');
     //this vatiable is being used to determine the button class

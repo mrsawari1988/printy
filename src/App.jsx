@@ -10,10 +10,17 @@ function App() {
     const { filesList, setFilesList, deleteFileHandler, clearAllFilesHandler, addFileHandler } =
         usePrinty();
     const [printersList, setPrintersList] = useState([]);
-    const [openModal, setOpenModal] = useState(true);
+
+    const [openModal, setOpenModal] = useState(false);
+    const [editItem, setEditItem] = useState({});
+
     const printHandler = () => {
         window.electronAPI.printFile(filesList);
     };
+    const updateEditItem = (item) => {
+        setEditItem(item);
+    };
+    const updateFilesList = (newItem) => {};
 
     useEffect(() => {
         //get printers from electronjs
@@ -39,11 +46,21 @@ function App() {
                         filesList={filesList}
                         deleteFileHandler={deleteFileHandler}
                         setFilesList={setFilesList}
+                        setEditItem={setEditItem}
+                        setOpenModal={setOpenModal}
                     />
                 </div>
                 <Footer printHandler={printHandler} clearAllFilesHandler={clearAllFilesHandler} />
             </div>
-            <Modal openModal={openModal} />
+            {openModal && (
+                <Modal
+                    openModal={openModal}
+                    setOpenModal={setOpenModal}
+                    editItem={editItem}
+                    updateFilesList={updateFilesList}
+                    setEditItem={setEditItem}
+                />
+            )}
         </>
     );
 }

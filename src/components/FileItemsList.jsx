@@ -5,7 +5,13 @@ import FileItem from './FileItem';
 import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-export default function FileItemList({ filesList, deleteFileHandler, setFilesList }) {
+export default function FileItemList({
+    filesList,
+    deleteFileHandler,
+    setFilesList,
+    setEditItem,
+    setOpenModal,
+}) {
     const sensors = useSensors(useSensor(PointerSensor));
     function handleDragEnd(event) {
         const { active, over } = event;
@@ -46,6 +52,9 @@ export default function FileItemList({ filesList, deleteFileHandler, setFilesLis
                                     id={item.id}
                                     deleteFileHandler={deleteFileHandler}
                                     handle={true}
+                                    setEditItem={setEditItem}
+                                    setOpenModal={setOpenModal}
+                                    item={item}
                                 />
                             );
                         })}
