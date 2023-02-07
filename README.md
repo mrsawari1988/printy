@@ -1,7 +1,22 @@
 # Printy
 
-with printy it's possible to print a set a files in order and number you want !
-it's developed on top of react and electronjs
+Printy is an app for printing PDF files in the order and umber that the user sets :
+
+it's developed with recat electronjs
+
+## features :
+
+### Adding files and selecting the printer and the copy number:
+
+![](https://github.com/mrsawari1988/printy/blob/main/public/images/Adding-File.gif)
+
+### changing the order by draging and drapping the items:
+
+![](https://github.com/mrsawari1988/printy/blob/main/public/images/Drag-and-Drop.gif)
+
+### it's possible to edit and delete an item:
+
+![](https://github.com/mrsawari1988/printy/blob/main/public/images/Delete-and-Edit.gif)
 
 ## Available Scripts
 
