@@ -1,6 +1,6 @@
 # Printy
 
-Printy is an app for printing PDF files in the order and umber that the user sets :
+Printy is an app for printing PDF files in the order and number that the user sets :
 
 it's developed with recat electronjs
 
