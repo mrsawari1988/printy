@@ -45,19 +45,43 @@ body {
 .header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 10px 10px 10px 0;
+    justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    -webkit-app-region: drag;
 }
-.header h2 {
+
+.header-title {
+    display: flex;
+    align-items: center;
+
+    padding: 10px 10px 10px 0;
+}
+.header-title h2 {
     color: #5372f0;
 }
 
-.header h5 {
+.header-title h5 {
     padding: 5px 5px 5px 10px;
     color: #ccc;
     margin-left: 10px;
     border-left: 1px solid #000;
+}
+
+.header-options {
+    align-self: self-start;
+    font-size: 18px;
+    -webkit-app-region: no-drag;
+}
+.header-options i {
+    cursor: pointer;
+}
+.header-options i:nth-of-type(1) {
+    font-size: 17px;
+    margin-right: 5px;
+}
+.header-options i:nth-of-type(2) {
+    color: rgb(196, 30, 30);
 }
 
 .wrapper {

@@ -20,15 +20,18 @@ const sendPrinters = async () => {
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 900,
-        height: 600,
+        width: 920,
+        height: 510,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
+        resizable: false,
+        // frame: false,
+        titleBarStyle: 'hidden',
     });
 
     win.loadURL('http://localhost:3000');
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
     ipcMain.on('print-file', (event, filesItems) => {
         //createPrintWindow(filePath);
         // console.log(filesItems);
@@ -36,6 +39,14 @@ function createWindow() {
     ipcMain.on('print-file', (event, filesItems) => {
         printFiles(filesItems);
         // console.log(filesItems);
+    });
+    ipcMain.on('app-quit', () => {
+        // console.log('quit app');
+        app.quit();
+    });
+    ipcMain.on('window-minimize', () => {
+        // console.log('quit app');
+        win.minimize();
     });
     //sending printers list back to the front end
     ipcMain.handle('get-printers', sendPrinters);
