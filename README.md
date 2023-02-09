@@ -10,7 +10,7 @@ it's developed with recat and electronjs
 
 ![](https://github.com/mrsawari1988/printy/blob/main/public/images/Adding-File.gif)
 
-### changing the order by draging and drapping the items:
+### changing the order by dragging and dropping the items:
 
 ![](https://github.com/mrsawari1988/printy/blob/main/public/images/Drag-and-Drop.gif)
 

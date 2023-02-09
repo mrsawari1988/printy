@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Contorols from './components/Contorols';
 import Footer from './components/FooterComponent';
@@ -19,7 +19,10 @@ function App() {
         window.electronAPI.printFile(filesList);
     };
 
+    //updating the file item after editing an item
     const updateFileItem = (item) => {
+        //the function loops through the state(filesList) to keep the items in the same order
+        //just replaces the edited item with the new one
         const newState = [];
         filesList.forEach((file) => {
             if (file.id !== item.id) {

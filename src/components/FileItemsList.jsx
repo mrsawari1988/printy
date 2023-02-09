@@ -13,6 +13,8 @@ export default function FileItemList({
     setOpenModal,
 }) {
     const sensors = useSensors(useSensor(PointerSensor));
+
+    //this function update the order of the state array after draging and droping an item to a new place
     function handleDragEnd(event) {
         const { active, over } = event;
         if (active.id !== over.id) {

@@ -103,6 +103,12 @@ body {
     flex-direction: column;
 }
 
+.btn {
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .wrapper .contorols .adding-contorols button {
     height: 40px;
     font-size: 14px;

@@ -24,7 +24,7 @@ export default function FileItem({
         transition,
     };
 
-    //setNodeRef and style are applied on main element whis is <li> here
+    //setNodeRef and style are applied on main element which is <li> here
     // attributes and listeners are applied to drag handler which is <i> here but if we dont use handler we must set them to the main element
     return (
         <li ref={setNodeRef} style={style}>
