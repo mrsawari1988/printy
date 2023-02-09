@@ -1,8 +1,9 @@
 # Printy
 
 Printy is an app for printing PDF files in the order and number that the user sets :
+--while adding a PDF file the user can choose the desired printer and set the number of copies
 
-it's developed with recat and electronjs
+it was developed with recatjs and electronjs
 
 ## features :
 
