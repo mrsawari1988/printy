@@ -6,6 +6,7 @@ import Header from './components/Header';
 import FileItemList from './components/FileItemsList';
 import usePrinty from './hooks/usePrinty';
 import Modal from './components/Modal';
+import EditModal from './components/editModal';
 import usePrinters from './hooks/usePrinters';
 function App() {
     const { filesList, setFilesList, deleteFileHandler, clearAllFilesHandler, addFileHandler } =
@@ -54,14 +55,16 @@ function App() {
 
             {/* modal part for editing  */}
             {openModal && (
-                <Modal
-                    openModal={openModal}
-                    setOpenModal={setOpenModal}
-                    editItem={editItem}
-                    setEditItem={setEditItem}
-                    updateFileItem={updateFileItem}
-                    printersList={printersList}
-                />
+                <Modal setOpenModal={setOpenModal}>
+                    <EditModal
+                        openModal={openModal}
+                        setOpenModal={setOpenModal}
+                        editItem={editItem}
+                        setEditItem={setEditItem}
+                        updateFileItem={updateFileItem}
+                        printersList={printersList}
+                    />
+                </Modal>
             )}
         </>
     );
