@@ -333,6 +333,7 @@ p.alert {
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-app-region: no-drag;
 }
 
 .modal-body {
